@@ -1,9 +1,6 @@
 import tkinter #imports tkinter
 import math
 
-#sheeeesh
-
-#sheeeeeeeeeeeeeeeeeeeeeeesh
 
 #gridsize is the length of each part of the grid for x and y 480/48**2
 
