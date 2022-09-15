@@ -1,7 +1,7 @@
 import tkinter #imports tkinter
 import math
 
-
+#afiahoi
 #gridsize is the length of each part of the grid for x and y 480/48**2
 
 class Window(tkinter.Tk): #creates a class called window  48/5=10
