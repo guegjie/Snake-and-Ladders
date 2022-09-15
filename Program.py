@@ -9,10 +9,10 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         super().__init__()
         self.size = Size
         self.Canvas = tkinter.Canvas(self, background="black", width=Size[0], height=Size[1])
+        self.Canvas.pack()
         self.Roll = tkinter.Button(self, background="white",width=10, height=1, text="Roll")
         self.Roll.pack()
         self.title(Title)
-        self.Canvas.pack()
         self.resizable(False, False)
         print("hello world")
         self.create_grid(Gridsize=gridsize) #
