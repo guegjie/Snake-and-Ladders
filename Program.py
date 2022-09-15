@@ -14,7 +14,6 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.Roll.pack()
         self.title(Title)
         self.resizable(False, False)
-        print("hello world")
         self.create_grid(Gridsize=gridsize) #
         self.add_numbers(gridsize, [round(self.size[1]/gridsize[1]), round(self.size[0]/gridsize[0])], [2, 2+gridsize[1]*round(self.size[1]/gridsize[1])])
     
