@@ -10,8 +10,9 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.size = Size
         self.Canvas = tkinter.Canvas(self, background="black", width=Size[0], height=Size[1])
         self.Canvas.pack()
-        self.RollBtn = tkinter.Button(self, background="white",width=10, height=1, text="Roll")
+        self.RollBtn = tkinter.Button(self, background="white",width=10, height=1, text="Roll", command=self.rollFunc)
         self.RollBtn.pack()
+        self.RollBtn.bind()
         self.title(Title)
         self.resizable(False, False)
         self.create_grid(Gridsize=gridsize) #
@@ -49,4 +50,4 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         
 
     def rollFunc(self):
-        pass
+        print("hello world")

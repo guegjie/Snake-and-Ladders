@@ -4,7 +4,7 @@ import Player
 def main():
     window = Window.Window()
     playerOne = Player.Player(name="Louis", colour="red")
-    PlayerOne.draw(window=window)
+    playerOne.draw(window=window)
     window.mainloop()
 
 
