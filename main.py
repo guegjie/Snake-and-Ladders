@@ -2,10 +2,10 @@ import Window
 import Player
 
 def main():
-    window = Window.Window()
+    MainWindow = Window.Window()
     playerOne = Player.Player(name="Louis", colour="red")
-    playerOne.draw(window=window)
-    window.mainloop()
+    playerOne.draw(window=MainWindow)
+    MainWindow.mainloop()
 
 
 if __name__ == "__main__":
