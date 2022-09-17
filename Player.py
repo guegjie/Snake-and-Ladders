@@ -1,4 +1,5 @@
 import Window
+import tkinter
 #ihioh
 
 class Player:
@@ -6,4 +7,4 @@ class Player:
         self.Position = position
 
     def draw(window=Window.Window()):
-        window.Canvas.create 
+        window.Canvas.create_oval(10, 10, 20, 20)
