@@ -3,4 +3,7 @@
 
 class Player:
     def __init__(self, name="player", position=0, colour="blue"):
-            pass
+        self.Position = position
+
+    def draw(window):
+        window.Canvas.create 
