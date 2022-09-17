@@ -7,6 +7,5 @@ def main():
     playerOne.draw(window=MainWindow)
     MainWindow.mainloop()
 
-
 if __name__ == "__main__":
     main()
