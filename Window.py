@@ -10,15 +10,12 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.size = Size
         self.Canvas = tkinter.Canvas(self, background="black", width=Size[0], height=Size[1])
         self.Canvas.pack()
-        self.Roll = tkinter.Button(self, background="white",width=10, height=1, text="Roll")
-        self.Roll.pack()
+        self.RollBtn = tkinter.Button(self, background="white",width=10, height=1, text="Roll")
+        self.RollBtn.pack()
         self.title(Title)
         self.resizable(False, False)
         self.create_grid(Gridsize=gridsize) #
         self.add_numbers(gridsize, [round(self.size[1]/gridsize[1]), round(self.size[0]/gridsize[0])], [2, 2+gridsize[1]*round(self.size[1]/gridsize[1])])
-    
-    def roll(self, player):
-        pass
 
     def create_grid(self, Gridsize=[1,1]): # creates grid\
         for y in range(0, round(self.size[1]/Gridsize[1])):
