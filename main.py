@@ -1,8 +1,8 @@
-import Window as Window
+import Window
 
 
 def main():
-    window = Window.Window()
+    window = Window()
     window.mainloop()
 
 

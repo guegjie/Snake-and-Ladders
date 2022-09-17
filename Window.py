@@ -49,7 +49,3 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                 start_from = "right"
             else:
                 start_from = "left"
-
-    
-window = Window() #creates the object of window
-window.mainloop() #run a main loop cuz i cant be bothered to program my own just yet
