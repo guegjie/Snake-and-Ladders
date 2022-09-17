@@ -49,3 +49,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                 start_from = "right"
             else:
                 start_from = "left"
+        
+
+    def rollFunc(self):
+        pass
