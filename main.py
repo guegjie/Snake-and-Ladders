@@ -2,7 +2,8 @@ import Window
 import Player
 
 def main():
-    player = Player.Player()
+    playerOne = Player.Player()
+    playerTwo = Player.Player()
     window = Window.Window()
     window.mainloop()
 
