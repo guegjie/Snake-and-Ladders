@@ -1,7 +1,8 @@
 import Window
-
+import Player
 
 def main():
+    player = Player.Player()
     window = Window.Window()
     window.mainloop()
 
