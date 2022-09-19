@@ -16,7 +16,7 @@ def main():
         snakes.append(Obstacle(random.randint(0,150), random.randint(0,150), MainWindow))
     
     for snake in snakes:
-        snake.draw(MainWindow)
+        snake.draw()
     
     MainWindow.mainloop()
 

@@ -5,8 +5,9 @@ class Obstacle:
         self.start_pos = start_pos
         self.end_pos = end_pos
         print(self.start_pos, self.end_pos)
-        self.start_coords = window.generate_coordinates(start_pos)
-        self.end_coords = window.generate_coordinates(end_pos)
+        self.window = window
+        self.start_coords = self.window.generate_coordinates(start_pos)
+        self.end_coords = self.window.generate_coordinates(end_pos)
         self.type = type
         self.generate_obstacle()
     
@@ -28,6 +29,9 @@ class Obstacle:
             start_point = self.end_coords
             end_point = self.start_coords
 
+        self.window.Canvas.create_oval(start_point[0] - 2, start_point[1] - 2, start_point[0] + 2, start_point[1] + 2, fill="green")
+        self.window.Canvas.create_oval(end_point[0] - 2, end_point[1] - 2, end_point[0] + 2, end_point[1] + 2, fill="red")
+        
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
 
         if self.type == "snake":
@@ -53,6 +57,6 @@ class Obstacle:
         self.points = points_rotated
 
 
-    def draw(self, window):
-        window.Canvas.create_polygon(self.points, fill="black")
+    def draw(self):
+        self.window.Canvas.create_polygon(self.points, fill="black")
     
