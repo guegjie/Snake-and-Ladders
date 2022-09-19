@@ -4,6 +4,7 @@ class Obstacle:
     def __init__(self, start_pos, end_pos, window, type="snake"):
         self.start_pos = start_pos
         self.end_pos = end_pos
+        print(self.start_pos, self.end_pos)
         self.start_coords = window.generate_coordinates(start_pos)
         self.end_coords = window.generate_coordinates(end_pos)
         self.type = type
