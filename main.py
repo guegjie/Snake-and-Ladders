@@ -15,7 +15,7 @@ def main():
     for i in range(0, 10):
         big = random.randint(0, 150)
         small = random.randint(0, big)
-        snakes.append(Snake(small, big, MainWindow))
+        snakes.append(Obstacle(small, big, MainWindow))
     
     MainWindow.mainloop()
 
