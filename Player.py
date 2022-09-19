@@ -8,3 +8,4 @@ class Player:
 
     def draw(self, window):
         window.Canvas.create_oval([window.Positions[self.Position-1][1][0]-window.gridsize[0]/2, window.Positions[self.Position-1][1][1]-window.gridsize[1]/2], [window.Positions[self.Position-1][1][0]+window.gridsize[0]/2, window.Positions[self.Position-1][1][1]+window.gridsize[1]/2], fill="red")
+        

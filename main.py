@@ -1,4 +1,3 @@
-from re import M
 from Window import Window
 from Player import Player
 from snakes_ladders import Snake, Ladder
