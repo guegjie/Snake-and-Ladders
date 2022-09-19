@@ -1,6 +1,6 @@
 from Window import Window
 from Player import Player
-from snakes_ladders import Snake, Ladder
+from snakes_ladders import Obstacle
 import random
 
 import math
@@ -15,7 +15,7 @@ def main():
     for i in range(0, 10):
         big = random.randint(0, 150)
         small = random.randint(0, big)
-        snakes.append(Snake(small, big, MainWindow))
+        snakes.append(Obstacle(small, big, MainWindow))
     
     MainWindow.mainloop()
 
