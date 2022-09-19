@@ -2,7 +2,6 @@ import math
 
 class Obstacle:
     def __init__(self, start_pos, end_pos, window, type="snake"):
-        print(self.Rotate(point=[10, 10], centre=[0,0], rotation=180))
         self.start_pos = start_pos
         self.end_pos = end_pos
         self.start_coords = window.generate_coordinates(start_pos)
@@ -43,6 +42,8 @@ class Obstacle:
         vector_right = [1,0]
         vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
 
+        print(start_point, end_point)
+
         angle = math.acos(vector_points[0] / math.sqrt((vector_points[0]**2)+(vector_points[1]**2)))
         angle = math.degrees(angle)
 
@@ -51,7 +52,6 @@ class Obstacle:
             points_rotated.append(self.Rotate(point, start_point, 90 + angle))
 
         self.points = points_rotated
-        print(self.points)
 
 
     def draw(self, window):
