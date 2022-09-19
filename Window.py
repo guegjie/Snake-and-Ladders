@@ -51,6 +51,8 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
             else:
                 start_from = "left"
         
+    def generate_coordinates(self, number):
+        return [self.window.Positions[number-1][1][0], self.window.Positions[number-1][1][1]]
 
     def rollFunc(self):
         print("hello world")
