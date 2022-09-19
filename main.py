@@ -1,6 +1,7 @@
 from Window import Window
 from Player import Player
 from snakes_ladders import Snake, Ladder
+import random
 
 import math
 
@@ -9,8 +10,12 @@ def main():
     playerOne = Player(name="Louis", colour="red")
     playerOne.draw(MainWindow)
 
-    snakeone = Obstacle(150, 15, MainWindow)
-    snakeone.draw(MainWindow)
+    snakes = []
+    
+    for i in range(0, 10):
+        big = random.randint(0, 150)
+        small = random.randint(0, big)
+        snakes.append(Snake(small, big, MainWindow))
     
     MainWindow.mainloop()
 
