@@ -33,8 +33,8 @@ class Snake:
         return [qx, qy]
 
     def generate_snake(self):
-        start_point = self.start_coords
-        end_point = self.end_coords
+        start_point = self.end_coords
+        end_point = self.start_coords
         print(start_point)
         print(end_point)
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))

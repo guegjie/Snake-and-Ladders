@@ -10,6 +10,7 @@ def main():
     playerOne = Player(name="Louis", colour="red")
     playerOne.draw(MainWindow)
 
+
     snakes = []
     
     for i in range(0, 10):
