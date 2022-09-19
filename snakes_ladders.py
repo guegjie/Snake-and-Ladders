@@ -18,6 +18,20 @@ class Snake:
         point_list = [round(x + centre[0]), round(y + centre[1])]
         return point_list
 
+    def rotate(self, origin, point, angle):
+        """
+        Rotate a point counterclockwise by a given angle around a given origin.
+
+        The angle should be given in radians.
+        """
+        angle = math.radians(angle)
+        ox, oy = origin
+        px, py = point
+
+        qx = ox + math.cos(angle) * (px - ox) - math.sin(angle) * (py - oy)
+        qy = oy + math.sin(angle) * (px - ox) + math.cos(angle) * (py - oy)
+        return [qx, qy]
+
     def generate_snake(self):
         start_point = self.start_coords
         end_point = self.end_coords
@@ -36,7 +50,7 @@ class Snake:
 
         points_rotated = []
         for point in points:
-            points_rotated.append(self.Rotate(point, start_point, angle))
+            points_rotated.append(self.rotate(start_point, point, 360-angle))
 
         self.points = points_rotated
         print(self.points)
