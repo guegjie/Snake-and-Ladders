@@ -13,9 +13,7 @@ def main():
     snakes = []
     
     for i in range(0, 10):
-        big = random.randint(0, 150)
-        small = random.randint(0, big-5)
-        snakes.append(Obstacle(small, big, MainWindow))
+        snakes.append(Obstacle(random.randint(0,150), random.randint(0,150), MainWindow))
     
     for snake in snakes:
         snake.draw(MainWindow)
