@@ -22,7 +22,7 @@ class Obstacle:
 
 
     def generate_obstacle(self):
-        if self.start_coords < self.end_coords:
+        if self.start_pos < self.end_pos:
             start_point = self.start_coords
             end_point = self.end_coords
         else:
