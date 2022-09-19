@@ -1,12 +1,12 @@
 import math
 
 class Snake:
-    def __init__(self, start_pos, end_pos):
+    def __init__(self, start_pos, end_pos, window):
         print(self.Rotate(point=[10, 10], centre=[0,0], rotation=180))
         self.start_pos = start_pos
         self.end_pos = end_pos
-        self.start_coords = self.window.generate_coordinates(start_pos)
-        self.end_coords = self.window.generate_coordinates(end_pos)
+        self.start_coords = window.generate_coordinates(start_pos)
+        self.end_coords = window.generate_coordinates(end_pos)
         self.generate_snake()
     
     def Rotate(self, point=[0,0], centre=[0,0], rotation=0):
@@ -23,9 +23,13 @@ class Snake:
         end_point = self.end_coords
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
         #head
-        points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
+        #points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
         #body
-        points.extend([[start_point[0] + 2.5, start_point[1] + 7.5], [start_point[0] + 2.5, start_point[1] + length - 2.5], [start_point[0], start_point[1] + length], [start_point[0] - 2.5, start_point[1] + length - 2.5], [start_point[0] - 2.5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5]])
+        #points.extend([[start_point[0] + 2.5, start_point[1] + 7.5], [start_point[0] + 2.5, start_point[1] + length - 2.5], [start_point[0], start_point[1] + length], [start_point[0] - 2.5, start_point[1] + length - 2.5], [start_point[0] - 2.5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5]])
+        points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] - 2.5, start_point[1] + length], [start_point[0] + 2.5, start_point[1]+length]]
+
+
+        print(points)
 
         angle = math.acos((start_point[1]-end_point[1])/length)
 
