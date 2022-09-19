@@ -29,8 +29,8 @@ class Obstacle:
             start_point = self.end_coords
             end_point = self.start_coords
 
-        self.window.Canvas.create_oval(start_point[0] - 5, start_point[1] - 5, start_point[0] + 5, start_point[1] + 5, fill="green")
-        self.window.Canvas.create_oval(end_point[0] - 5, end_point[1] - 5, end_point[0] + 5, end_point[1] + 5, fill="red")
+        #self.window.Canvas.create_oval(start_point[0] - 5, start_point[1] - 5, start_point[0] + 5, start_point[1] + 5, fill="green")
+        #self.window.Canvas.create_oval(end_point[0] - 5, end_point[1] - 5, end_point[0] + 5, end_point[1] + 5, fill="red")
         
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
 
@@ -42,7 +42,7 @@ class Obstacle:
             points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1] + length], [start_point[0] - 2.5, start_point[1]+length]]
 
         if self.type == "ladder":
-            pass
+            points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1] + length], [start_point[0] - 2.5, start_point[1]+length]]
 
         vector_right = [1,0]
         vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
@@ -58,5 +58,8 @@ class Obstacle:
 
 
     def draw(self):
-        self.window.Canvas.create_polygon(self.points, fill="black")
+        if self.type == "snake":
+            self.window.Canvas.create_polygon(self.points, fill="green")
+        if self.type == "ladder":
+            self.window.Canvas.create_polygon(self.points, fill="brown")
     
