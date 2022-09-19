@@ -6,6 +6,8 @@ class Snake:
         self.start_pos = start_pos
         self.end_pos = end_pos
         self.window = window
+        self.start_coords = self.window.generate_coordinates(start_pos)
+        self.end_coords = self.window.generate_coordinates(end_pos)
         self.generate_snake()
     
     def Rotate(self, point=[0,0], centre=[0,0], rotation=0):
@@ -17,14 +19,9 @@ class Snake:
         point_list = [round(x + centre[0]), round(y + centre[1])]
         return point_list
 
-    def generate_coordinates(self, number):
-        #variable determines which side the numbers count on for each row
-        start_from = "left"        
-
-
     def generate_snake(self):
-        start_point = self.start_point
-        end_point = self.end_point
+        start_point = self.start_coords
+        end_point = self.end_coords
         length = math.sqrt(((start_pos[0]-end_pos[0])**2) + ((start_pos[1]-end_pos[1]) ** 2))
         #head
         points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
