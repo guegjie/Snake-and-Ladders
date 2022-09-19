@@ -9,7 +9,7 @@ def main():
     playerOne = Player(name="Louis", colour="red")
     playerOne.draw(MainWindow)
 
-    snakeone = Snake(150, 15, MainWindow)
+    snakeone = Obstacle(150, 15, MainWindow)
     snakeone.draw(MainWindow)
     
     MainWindow.mainloop()
