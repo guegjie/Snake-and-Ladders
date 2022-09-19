@@ -42,8 +42,6 @@ class Obstacle:
         vector_right = [1,0]
         vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
 
-        print(start_point, end_point)
-
         angle = math.acos(vector_points[0] / math.sqrt((vector_points[0]**2)+(vector_points[1]**2)))
         angle = math.degrees(angle)
 
