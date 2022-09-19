@@ -58,7 +58,7 @@ class Snake:
 
         points_rotated = []
         for point in points:
-            points_rotated.append(self.Rotate(point, start_point, -angle + 180))
+            points_rotated.append(self.Rotate(point, start_point, 180-angle))
 
         self.points = points_rotated
         print(self.points)
