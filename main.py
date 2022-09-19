@@ -1,10 +1,10 @@
-import Window
+from Window import Window
 import Player
 
 def main():
-    MainWindow = Window.Window()
+    MainWindow = Window(Title="Snakes&Ladders")
     playerOne = Player.Player(name="Louis", colour="red")
-    playerOne.draw(window=MainWindow)
+    playerOne.draw(MainWindow)
     MainWindow.mainloop()
 
 if __name__ == "__main__":

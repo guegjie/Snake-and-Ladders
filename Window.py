@@ -8,12 +8,14 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
     def __init__(self, Title="Window", Size=[721, 481], gridsize=[48,48]): #
         super().__init__()
         self.size = Size
+        self.Positions = []
         self.Canvas = tkinter.Canvas(self, background="black", width=Size[0], height=Size[1])
         self.Canvas.pack()
         self.RollBtn = tkinter.Button(self, background="white",width=10, height=1, text="Roll", command=self.rollFunc)
         self.RollBtn.pack()
         self.RollBtn.bind()
         self.title(Title)
+        self.gridsize = gridsize
         self.resizable(False, False)
         self.create_grid(Gridsize=gridsize) #
         self.add_numbers(gridsize, [round(self.size[1]/gridsize[1]), round(self.size[0]/gridsize[0])], [2, 2+gridsize[1]*round(self.size[1]/gridsize[1])])
@@ -40,6 +42,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                     right_x = grid_location[0] + (grid_dimensions[1]*square_dimensions[0])
                     x = right_x - (0.5 * square_dimensions[0]) - (square_dimensions[0] * square)
                 self.Canvas.create_text(x, y, text=str(number), fill="black", font="Helvetica 8 normal")
+                self.Positions.append([number, [x,y]])
                 number += 1
 
             #alternates start_from from row to row
