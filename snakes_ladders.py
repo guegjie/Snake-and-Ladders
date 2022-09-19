@@ -22,7 +22,7 @@ class Snake:
     def generate_snake(self):
         start_point = self.start_coords
         end_point = self.end_coords
-        length = math.sqrt(((start_pos[0]-end_pos[0])**2) + ((start_pos[1]-end_pos[1]) ** 2))
+        length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
         #head
         points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
         #body
