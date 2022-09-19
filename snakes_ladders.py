@@ -13,6 +13,9 @@ class Snake:
 
         point_list = [round(x + centre[0]), round(y + centre[1])]
         return point_list
+
+    def draw(self, window):
+        window.Canvas.create_polygon()
     
 
 class Ladder:
@@ -28,5 +31,3 @@ class Ladder:
 
         point_list = [round(x + centre[0]), round(y + centre[1])]
         return point_list
-    
-snake = Snake()
