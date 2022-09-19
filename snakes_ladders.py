@@ -48,10 +48,12 @@ class Snake:
 
         print(points)
 
-        print(abs(start_point[1]-end_point[1]) / length)
         thing_in_cos = abs(start_point[1]-end_point[1]) / length
         
-        angle = math.acos(abs(start_point[1]-end_point[1]) / length)
+        #angle = math.acos(abs(start_point[1]-end_point[1]) / length)
+        angle = math.acos(thing_in_cos)
+        angle = math.degrees(angle)
+        print(thing_in_cos)
         print(angle)
 
         points_rotated = []
