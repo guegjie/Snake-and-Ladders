@@ -9,7 +9,11 @@ def main():
     playerOne = Player(name="Louis", colour="red")
     playerOne.draw(MainWindow)
     
+<<<<<<< HEAD
     snakeone = Snake(3, 97, MainWindow)
+=======
+    snakeone = Snake(97, 3, MainWindow)
+>>>>>>> c52cb58269fda916f8a65eb130690eb1e68b1f8b
     snakeone.draw(MainWindow)
     
     MainWindow.mainloop()
