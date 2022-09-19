@@ -4,7 +4,7 @@ class Snake:
         self.end_pos = end_pos
 
     def draw(self, window):
-        pass
+        window.Canvas.create_polygon()
     
 
 class Ladder:
