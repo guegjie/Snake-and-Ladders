@@ -8,8 +8,8 @@ def main():
     MainWindow = Window(Title="Snakes&Ladders")
     playerOne = Player(name="Louis", colour="red")
     playerOne.draw(MainWindow)
-    
-    snakeone = Snake(3, 19, MainWindow)
+
+    snakeone = Snake(97, 3, MainWindow)
     snakeone.draw(MainWindow)
     
     MainWindow.mainloop()

@@ -48,17 +48,26 @@ class Snake:
 
         print(points)
 
-        thing_in_cos = abs(start_point[1]-end_point[1]) / length
+        vector_right = [1,0]
+        vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
+
+        angle = math.acos(vector_points[0] / math.sqrt((vector_points[0]**2)+(vector_points[1]**2)))
+
+        #thing_in_cos = abs(start_point[0]-end_point[0]) / length
         
         #angle = math.acos(abs(start_point[1]-end_point[1]) / length)
-        angle = math.acos(thing_in_cos)
+        #angle = math.acos(thing_in_cos)
         angle = math.degrees(angle)
-        print(thing_in_cos)
-        print(angle)
+        #print(thing_in_cos)
+        #print(angle)
+        #angle = angle + 90
+        #if angle >= 180:
+            #angle = 270 - angle
+
 
         points_rotated = []
         for point in points:
-            points_rotated.append(self.Rotate(point, start_point, 180-angle))
+            points_rotated.append(self.Rotate(point, start_point, 90 + angle))
 
         self.points = points_rotated
         print(self.points)
