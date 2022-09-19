@@ -29,8 +29,8 @@ class Obstacle:
             start_point = self.end_coords
             end_point = self.start_coords
 
-        self.window.Canvas.create_oval(start_point[0] - 2, start_point[1] - 2, start_point[0] + 2, start_point[1] + 2, fill="green")
-        self.window.Canvas.create_oval(end_point[0] - 2, end_point[1] - 2, end_point[0] + 2, end_point[1] + 2, fill="red")
+        self.window.Canvas.create_oval(start_point[0] - 5, start_point[1] - 5, start_point[0] + 5, start_point[1] + 5, fill="green")
+        self.window.Canvas.create_oval(end_point[0] - 5, end_point[1] - 5, end_point[0] + 5, end_point[1] + 5, fill="red")
         
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
 
