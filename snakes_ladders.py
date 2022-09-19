@@ -49,6 +49,7 @@ class Snake:
         print(points)
 
         print(abs(start_point[1]-end_point[1]) / length)
+        thing_in_cos = abs(start_point[1]-end_point[1]) / length
         
         angle = math.acos(abs(start_point[1]-end_point[1]) / length)
         print(angle)
