@@ -10,7 +10,6 @@ class Snake:
         x = (point[0] * math.cos(rotation)) + (point[1] * math.sin(rotation))
         y = (point[1] * math.cos(rotation)) - (point[0] * math.sin(rotation))
 
-
         point_list = [round(x + centre[0]), round(y + centre[1])]
         return point_list
 
