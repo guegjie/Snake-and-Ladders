@@ -35,8 +35,11 @@ class Snake:
     def generate_snake(self):
         start_point = self.start_coords
         end_point = self.end_coords
+        print(start_point)
+        print(end_point)
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
-        
+        print(length)
+
         #head
         #points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
         #body
@@ -46,11 +49,12 @@ class Snake:
 
         print(points)
 
-        angle = math.acos((start_point[1]-end_point[1])/length)
+        angle = math.acos(abs(start_point[1]-end_point[1])/length)
+        print(angle)
 
         points_rotated = []
         for point in points:
-            points_rotated.append(self.Rotate(point, start_point, 360-angle))
+            points_rotated.append(self.Rotate(point, start_point, 90-angle))
 
         self.points = points_rotated
         print(self.points)
