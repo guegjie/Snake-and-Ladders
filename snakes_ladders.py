@@ -8,10 +8,7 @@ class Obstacle:
         self.start_coords = window.generate_coordinates(start_pos)
         self.end_coords = window.generate_coordinates(end_pos)
         self.type = type
-        if self.type == "snake":
-            self.generate_snake()
-        if self.type == "ladder":
-            pass
+        self.generate_obstacle()
     
     def Rotate(self, point=[0,0], centre=[0,0], rotation=0):
         rotation = math.radians(rotation)
@@ -22,56 +19,32 @@ class Obstacle:
         point_list = [round(x + centre[0]), round(y + centre[1])]
         return point_list
 
-    def rotate(self, point, origin, angle):
-        """
-        Rotate a point counterclockwise by a given angle around a given origin.
 
-        The angle should be given in radians.
-        """
-        angle = math.radians(angle)
-        ox, oy = origin
-        px, py = point
-
-        qx = ox + math.cos(angle) * (px - ox) - math.sin(angle) * (py - oy)
-        qy = oy + math.sin(angle) * (px - ox) + math.cos(angle) * (py - oy)
-        return [qx, qy]
-
-    def generate_snake(self):
+    def generate_obstacle(self):
         if self.start_coords < self.end_coords:
             start_point = self.start_coords
             end_point = self.end_coords
         else:
             start_point = self.end_coords
             end_point = self.start_coords
-        print(start_point)
-        print(end_point)
+
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
 
-        #head
-        #points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
-        #body
-        #points.extend([[start_point[0] + 2.5, start_point[1] + 7.5], [start_point[0] + 2.5, start_point[1] + length - 2.5], [start_point[0], start_point[1] + length], [start_point[0] - 2.5, start_point[1] + length - 2.5], [start_point[0] - 2.5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5]])
-        points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1] + length], [start_point[0] - 2.5, start_point[1]+length]]
+        if self.type == "snake":
+            #head
+            #points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
+            #body
+            #points.extend([[start_point[0] + 2.5, start_point[1] + 7.5], [start_point[0] + 2.5, start_point[1] + length - 2.5], [start_point[0], start_point[1] + length], [start_point[0] - 2.5, start_point[1] + length - 2.5], [start_point[0] - 2.5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5]])
+            points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1] + length], [start_point[0] - 2.5, start_point[1]+length]]
 
-
-        print(points)
+        if self.type == "ladder":
+            pass
 
         vector_right = [1,0]
         vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
 
         angle = math.acos(vector_points[0] / math.sqrt((vector_points[0]**2)+(vector_points[1]**2)))
-
-        #thing_in_cos = abs(start_point[0]-end_point[0]) / length
-        
-        #angle = math.acos(abs(start_point[1]-end_point[1]) / length)
-        #angle = math.acos(thing_in_cos)
         angle = math.degrees(angle)
-        #print(thing_in_cos)
-        #print(angle)
-        #angle = angle + 90
-        #if angle >= 180:
-            #angle = 270 - angle
-
 
         points_rotated = []
         for point in points:
