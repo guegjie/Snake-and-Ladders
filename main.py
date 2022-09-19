@@ -17,6 +17,9 @@ def main():
         small = random.randint(0, big)
         snakes.append(Obstacle(small, big, MainWindow))
     
+    for snake in snakes:
+        snake.draw(MainWindow)
+    
     MainWindow.mainloop()
 
 if __name__ == "__main__":
