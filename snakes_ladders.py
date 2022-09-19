@@ -41,7 +41,7 @@ class Snake:
         #points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
         #body
         #points.extend([[start_point[0] + 2.5, start_point[1] + 7.5], [start_point[0] + 2.5, start_point[1] + length - 2.5], [start_point[0], start_point[1] + length], [start_point[0] - 2.5, start_point[1] + length - 2.5], [start_point[0] - 2.5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5]])
-        points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] - 2.5, start_point[1] + length], [start_point[0] + 2.5, start_point[1]+length]]
+        points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1] + length], [start_point[0] - 2.5, start_point[1]+length]]
 
 
         print(points)
@@ -50,7 +50,7 @@ class Snake:
 
         points_rotated = []
         for point in points:
-            points_rotated.append(self.rotate(point, start_point, 270+angle))
+            points_rotated.append(self.rotate(point, start_point, 360-angle))
 
         self.points = points_rotated
         print(self.points)
