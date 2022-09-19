@@ -21,7 +21,10 @@ class Snake:
     def generate_snake(self):
         start_point = self.start_coords
         end_point = self.end_coords
+        print(start_point)
+        print(end_point)
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
+        
         #head
         #points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
         #body
@@ -35,7 +38,7 @@ class Snake:
 
         points_rotated = []
         for point in points:
-            points_rotated.append(self.Rotate(point, start_point, 180+angle))
+            points_rotated.append(self.Rotate(point, start_point, angle))
 
         self.points = points_rotated
         print(self.points)
