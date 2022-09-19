@@ -1,11 +1,10 @@
 import math
 
 class Snake:
-    def __init__(self, start_pos, end_pos, window):
+    def __init__(self, start_pos, end_pos):
         print(self.Rotate(point=[10, 10], centre=[0,0], rotation=180))
         self.start_pos = start_pos
         self.end_pos = end_pos
-        self.window = window
         self.start_coords = self.window.generate_coordinates(start_pos)
         self.end_coords = self.window.generate_coordinates(end_pos)
         self.generate_snake()
@@ -38,8 +37,8 @@ class Snake:
         print(self.points)
 
 
-    def draw(self):
-        self.window.Canvas.create_polygon(self.points, fill="black")
+    def draw(self, window):
+        window.Canvas.create_polygon(self.points, fill="black")
     
 
 class Ladder:
