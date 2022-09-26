@@ -2,8 +2,8 @@ from Window import Window
 from Player import Player
 from snakes_ladders import Obstacle
 import random
-
 import math
+
 
 def main():
     MainWindow = Window(Title="Snakes&Ladders")
