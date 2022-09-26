@@ -7,5 +7,7 @@ class Player:
         self.Colour = colour
 
     def draw(self, window):
-        window.Canvas.create_oval([window.Positions[self.Position-1][1][0]-window.gridsize[0]/2, window.Positions[self.Position-1][1][1]-window.gridsize[1]/2], [window.Positions[self.Position-1][1][0]+window.gridsize[0]/2, window.Positions[self.Position-1][1][1]+window.gridsize[1]/2], fill="red")
+        coords = window.generate_coordinates(self.Position)
+        
+        window.Canvas.create_oval([window.Positions[self.Position-1][1][0]-window.square_size[0]/2, window.Positions[self.Position-1][1][1]-window.square_size[1]/2], [window.Positions[self.Position-1][1][0]+window.square_size[0]/2, window.Positions[self.Position-1][1][1]+window.square_size[1]/2], fill="red")
         

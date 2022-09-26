@@ -6,7 +6,7 @@ import math
 
 
 def main():
-    MainWindow = Window(Title="Snakes&Ladders")
+    MainWindow = Window(title="Snakes&Ladders")
     playerOne = Player(name="Louis", colour="red")
     playerOne.draw(MainWindow)
     
