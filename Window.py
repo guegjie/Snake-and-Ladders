@@ -23,8 +23,8 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.add_numbers(gridsize, self.grid_dimensions, [2, 2+gridsize[1]*round(self.size[1]/gridsize[1])])
 
     def create_grid(self, Gridsize=[1,1]): # creates grid\
-        for y in range(0, round(self.size[1]/Gridsize[1])):
-            for x in range(0, round(self.size[0]/Gridsize[0])):
+        for y in range(0, self.grid_dimensions[0]):
+            for x in range(0, self.grid_dimensions[1]):
                 square = [((Gridsize[0])*x+2), ((Gridsize[1])*y)+2, ((Gridsize[0]*x)+Gridsize[0])+2, ((Gridsize[1]*y)+Gridsize[0])+2] #creates the square
                 self.Canvas.create_rectangle(square, fill="White")
 
