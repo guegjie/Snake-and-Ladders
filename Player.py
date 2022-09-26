@@ -8,6 +8,6 @@ class Player:
 
     def draw(self, window):
         coords = window.generate_coordinates(self.Position)
-        
-        window.Canvas.create_oval([window.Positions[self.Position-1][1][0]-window.square_size[0]/2, window.Positions[self.Position-1][1][1]-window.square_size[1]/2], [window.Positions[self.Position-1][1][0]+window.square_size[0]/2, window.Positions[self.Position-1][1][1]+window.square_size[1]/2], fill="red")
+
+        window.Canvas.create_oval([coords[0]-window.square_size[0]/2, coords[1]-window.square_size[1]/2], [coords[0]+window.square_size[0]/2, coords[1]+window.square_size[1]/2], fill="red")
         
