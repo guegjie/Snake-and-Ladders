@@ -13,17 +13,31 @@ def main():
 
     snakes = []
     
-    for i in range(0, round(((MainWindow.size[0]/MainWindow.gridsize[0]*MainWindow.size[1]/MainWindow.gridsize[1])/100)*8)):
+    for i in range(0, round((MainWindow.total_squares/100)*4)):
         first = random.randint(16,150-16)
         second = random.randint(16,first-1)
         while first-16<=second:
             first = random.randint(16,150-16)
             second = random.randint(16,first-1)
-        
         snakes.append(Obstacle(first, second, MainWindow, "snake"))
     
     for snake in snakes:
         snake.draw()
+
+
+    ladders = []
+    
+    for i in range(0, round((MainWindow.total_squares/100)*4)):
+        first = random.randint(16,first-1)
+        second = random.randint(16,150-16)
+        while first-16<=second:
+            first = random.randint(16,150-16)
+            second = random.randint(16,first-1)
+        
+        ladders.append(Obstacle(first, second, MainWindow, "ladder"))
+    
+    for ladder in ladders:
+        ladder.draw()
     
     MainWindow.mainloop()
 

@@ -17,8 +17,10 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.title(Title)
         self.gridsize = gridsize
         self.resizable(False, False)
+        self.grid_dimensions = [round(self.size[1]/gridsize[1]), round(self.size[0]/gridsize[0])]
+        self.total_squares = self.grid_dimensions[1] * self.grid_dimensions[0]
         self.create_grid(Gridsize=gridsize) #
-        self.add_numbers(gridsize, [round(self.size[1]/gridsize[1]), round(self.size[0]/gridsize[0])], [2, 2+gridsize[1]*round(self.size[1]/gridsize[1])])
+        self.add_numbers(gridsize, self.grid_dimensions, [2, 2+gridsize[1]*round(self.size[1]/gridsize[1])])
 
     def create_grid(self, Gridsize=[1,1]): # creates grid\
         for y in range(0, round(self.size[1]/Gridsize[1])):
