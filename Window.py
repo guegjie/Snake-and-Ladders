@@ -17,7 +17,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.RollBtn = tkinter.Button(self, background="white",width=10, height=1, text="Roll", command=self.rollFunc)
         self.RollBtn.pack()
         self.RollBtn.bind()
-        self.grid_dimensions = [round(self.size[1]/square_size[1]), round(self.size[0]/square_size[0])]
+        self.grid_dimensions = [round(self.size[1]/self.square_size[1]), round(self.size[0]/self.square_size[0])]
         self.total_squares = self.grid_dimensions[1] * self.grid_dimensions[0]
         self.create_grid() #
         self.add_numbers([2, 2+square_size[1]*round(self.size[1]/square_size[1])])
@@ -37,11 +37,11 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         for row in range(self.grid_dimensions[0]):
             #find the y value of the text using the bottom y coordinate of the grid along with the height of the squares
             y = grid_location[1] - (0.5 * self.square_size[1]) - (self.square_size[1] * row) #
-            for square in range(self.square_size[1]): 
+            for square in range(self.grid_dimensions[1]): 
                 if start_from == "left":
-                    x = grid_location[0] + (0.5 * self.grid_dimensions[0]) + (self.grid_dimensions[0] * square)
+                    x = grid_location[0] + (0.5 * self.square_size[0]) + (self.square_size[0] * square)
                 else:
-                    right_x = grid_location[0] + (self.square_size[1]*self.square_size[0])
+                    right_x = grid_location[0] + (self.grid_dimensions[1]*self.square_size[0])
                     x = right_x - (0.5 * self.square_size[0]) - (self.square_size[0] * square)
                 self.Canvas.create_text(x, y, text=str(number), fill="black", font="Helvetica 8 normal")
                 self.Positions.append([number, [x,y]])
