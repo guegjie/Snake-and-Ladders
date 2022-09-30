@@ -115,9 +115,13 @@ class Player:
                 sum += 240
             
         
-        for colour in colours:   
-            colourButInDenary = []
-        main
+        colourButInDenary = [HexToBinary(colour[0]), HexToBinary(colour[1]), HexToBinary(colour[2])]
+        colourButInDenary[0] = (colourButInDenary[0]/100)*brightness
+        colourButInDenary[1] = (colourButInDenary[1]/100)*brightness
+        colourButInDenary[2] = (colourButInDenary[2]/100)*brightness
+        
+        Hex = "#" + hex(colourButInDenary[0]) + hex(colourButInDenary[1]) + hex(colourButInDenary[2])
+        return Hex
         
     def move(self, amount):
         self.position += amount
