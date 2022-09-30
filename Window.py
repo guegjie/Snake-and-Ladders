@@ -1,5 +1,6 @@
 import tkinter #imports tkinter
 import random
+import time
 
 #afiahoi
 #gridsize is the length of each part of the grid for x and y 480/48**2
@@ -55,6 +56,13 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         
     def generate_coordinates(self, number):
         return [self.Positions[number-1][1][0], self.Positions[number-1][1][1]]
+    
+
+    def mainGameLoop(self):
+        running = True
+        while running:
+            self.update()
+            time.sleep(0.016)
 
     def rollFunc(self):
         roll1 = random.randint(1,6)
