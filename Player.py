@@ -7,12 +7,16 @@ class Player:
         self.position = position
         self.colour = colour
         self.size = size
+        self.brightness = 100
 
     def draw(self, window):
         coords = window.generate_coordinates(self.position)
         radius = self.size[0] / 2
-        window.Canvas.create_oval([coords[0]-window.square_size[0]/2, coords[1]-window.square_size[1]/2], [coords[0]+window.square_size[0]/2, coords[1]+window.square_size[1]/2], fill="red")
+        self.drawnplayer = window.Canvas.create_oval([coords[0]-window.square_size[0]/2, coords[1]-window.square_size[1]/2], [coords[0]+window.square_size[0]/2, coords[1]+window.square_size[1]/2], fill=self.calculateBrightness("#FF0000", self.brightness))
         
+    def undraw(self, window):
+        window.Canvas.delete(self.drawnplayer)
+    
     def calculateBrightness(self, colour="#FFFFFF", brightness="100"):
         red = colour[1:3]
         green = colour[3:5]
@@ -23,12 +27,12 @@ class Player:
             return int(hex, 16)
             
         
-        colourButInDenary = [HexToBinary(colour[0]), HexToBinary(colour[1]), HexToBinary(colour[2])]
+        colourButInDenary = [HexToBinary(colours[0]), HexToBinary(colours[1]), HexToBinary(colours[2])]
         colourButInDenary[0] = (colourButInDenary[0]/100)*brightness
         colourButInDenary[1] = (colourButInDenary[1]/100)*brightness
         colourButInDenary[2] = (colourButInDenary[2]/100)*brightness
         
-        Hex = "#" + hex(colourButInDenary[0]) + hex(colourButInDenary[1]) + hex(colourButInDenary[2])
+        Hex = "#" + hex(round(colourButInDenary[0]))[2:3] + hex(round(colourButInDenary[1]))[2:3] + hex(round(colourButInDenary[2]))[2:3]
         return Hex
         
     def move(self, amount):

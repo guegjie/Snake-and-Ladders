@@ -58,15 +58,45 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         return [self.Positions[number-1][1][0], self.Positions[number-1][1][1]]
     
 
-    def mainGameLoop(self):
+    def mainGameLoop(self, players=[]):
         running = True
+        self.turn = 0
+        self.total_roll = 0
         while running:
+            
+            for player in players:
+                player.undraw(self)
+                
+            for player in players:
+                player.draw(self)
+                
+            if self.turn >= len(players):
+                self.turn = 0
+            
+            for i in range(0, len(players)):
+                if self.turn == i:
+                    if players[i].brightness >= 15:
+                        players[i].brightness -= 5
+                    for r in range(0, self.total_roll):
+                        players[i].undraw(self)
+                        players[i].position += 1
+                        players[i].draw(self)
+                        self.update()
+                        time.sleep(0.016)
+                    self.total_roll = 0
+                
+                if self.turn != i:
+                    players[i].brightness = 100
+                
+                
             self.update()
             time.sleep(0.016)
 
     def rollFunc(self):
+        self.roll_label = None
         roll1 = random.randint(1,6)
         roll2 = random.randint(1,6)
-        total_roll = roll1 + roll2
+        self.total_roll = roll1 + roll2
         self.roll_label = tkinter.Label(self, text="You rolled a {0} and a {1}.".format(roll1, roll2))
         self.roll_label.pack()
+        self.turn += 1

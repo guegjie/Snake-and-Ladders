@@ -7,8 +7,9 @@ import math
 
 def main():
     MainWindow = Window(title="Snakes&Ladders")
-    playerOne = Player(name="Louis", colour="red")
-    playerOne.draw(MainWindow)
+    players = [Player(name="Louis", colour="red"), Player(name="Not Louis", colour="red")]
+    for player in players:
+        player.draw(MainWindow)
     
 
     snakes = []
@@ -39,7 +40,8 @@ def main():
     for ladder in ladders:
         ladder.draw()
     
-    MainWindow.mainloop()
-
+    MainWindow.mainGameLoop(players=players)
+    
+    
 if __name__ == "__main__":
     main()
