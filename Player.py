@@ -19,100 +19,103 @@ class Player:
         blue = colour[5:8]
         colours = [red, green, blue]
         
-        def HexToBinary(hex="FF"):
-            sum = 0
-            if hex[1] == "1":
-                sum += 1
+        def HexToBinary(hex):
+            return int(hex, 16)
+
+        # def HexToBinary(hex="FF"):
+        #     sum = 0
+        #     if hex[1] == "1":
+        #         sum += 1
                 
-            if hex[1] == "2":
-                sum += 2
+        #     if hex[1] == "2":
+        #         sum += 2
         
-            if hex[1] == "3":
-                sum += 3
+        #     if hex[1] == "3":
+        #         sum += 3
                 
-            if hex[1] == "4":
-                sum += 4
+        #     if hex[1] == "4":
+        #         sum += 4
                 
-            if hex[1] == "5":
-                sum += 5
+        #     if hex[1] == "5":
+        #         sum += 5
             
-            if hex[1] == "6":
-                sum += 6
+        #     if hex[1] == "6":
+        #         sum += 6
             
-            if hex[1] == "7":
-                sum += 7
+        #     if hex[1] == "7":
+        #         sum += 7
                 
-            if hex[1] == "8":
-                sum += 8
+        #     if hex[1] == "8":
+        #         sum += 8
             
-            if hex[1] == "9":
-                sum += 9
+        #     if hex[1] == "9":
+        #         sum += 9
             
-            if hex[1] == "A":
-                sum += 10
+        #     if hex[1] == "A":
+        #         sum += 10
             
-            if hex[1] == "B":
-                sum += 11
+        #     if hex[1] == "B":
+        #         sum += 11
             
-            if hex[1] == "C":
-                sum += 12
+        #     if hex[1] == "C":
+        #         sum += 12
             
-            if hex[1] == "D":
-                sum += 13
+        #     if hex[1] == "D":
+        #         sum += 13
             
-            if hex[1] == "E":
-                sum += 14
+        #     if hex[1] == "E":
+        #         sum += 14
             
-            if hex[1] == "F":
-                sum += 15
-            
-            
+        #     if hex[1] == "F":
+        #         sum += 15
             
             
-            if hex[0] == "1":
-                sum += 16
+            
+            
+        #     if hex[0] == "1":
+        #         sum += 16
                 
-            if hex[0] == "2":
-                sum += 32
+        #     if hex[0] == "2":
+        #         sum += 32
         
-            if hex[0] == "3":
-                sum += 48
+        #     if hex[0] == "3":
+        #         sum += 48
                 
-            if hex[0] == "4":
-                sum += 64
+        #     if hex[0] == "4":
+        #         sum += 64
                 
-            if hex[0] == "5":
-                sum += 80
+        #     if hex[0] == "5":
+        #         sum += 80
             
-            if hex[0] == "6":
-                sum += 96
+        #     if hex[0] == "6":
+        #         sum += 96
             
-            if hex[0] == "7":
-                sum += 112
+        #     if hex[0] == "7":
+        #         sum += 112
                 
-            if hex[0] == "8":
-                sum += 128
+        #     if hex[0] == "8":
+        #         sum += 128
             
-            if hex[0] == "9":
-                sum += 144
+        #     if hex[0] == "9":
+        #         sum += 144
             
-            if hex[0] == "A":
-                sum += 160
+        #     if hex[0] == "A":
+        #         sum += 160
             
-            if hex[0] == "B":
-                sum += 176
+        #     if hex[0] == "B":
+        #         sum += 176
             
-            if hex[0] == "C":
-                sum += 192
+        #     if hex[0] == "C":
+        #         sum += 192
             
-            if hex[0] == "D":
-                sum += 208
+        #     if hex[0] == "D":
+        #         sum += 208
             
-            if hex[0] == "E":
-                sum += 224
+        #     if hex[0] == "E":
+        #         sum += 224
             
-            if hex[0] == "F":
-                sum += 240
+        #     if hex[0] == "F":
+        #         sum += 240
             
         
         for colour in colours:   
