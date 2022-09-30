@@ -14,9 +14,9 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.resizable(False, False)
         self.Canvas = tkinter.Canvas(self, background="black", width=size[0], height=size[1])
         self.Canvas.pack()
+        self.turn = 0
         self.RollBtn = tkinter.Button(self, background="white",width=10, height=1, text="Roll", command=self.rollFunc)
         self.RollBtn.pack()
-        self.RollBtn.bind()
         self.grid_dimensions = [round(self.size[1]/self.square_size[1]), round(self.size[0]/self.square_size[0])]
         self.total_squares = self.grid_dimensions[1] * self.grid_dimensions[0]
         self.create_grid() #
@@ -57,4 +57,8 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         return [self.Positions[number-1][1][0], self.Positions[number-1][1][1]]
 
     def rollFunc(self):
-        print("hello world")
+        roll1 = random.randint(1,6)
+        roll2 = random.randint(1,6)
+        total_roll = roll1 + roll2
+        self.roll_label = tkinter.Label(self, text="You rolled a {0} and a {1}.")
+        self.roll_label.pack()
