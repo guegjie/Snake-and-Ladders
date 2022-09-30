@@ -60,5 +60,5 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         roll1 = random.randint(1,6)
         roll2 = random.randint(1,6)
         total_roll = roll1 + roll2
-        self.roll_label = tkinter.Label(self, text="You rolled a {0} and a {1}.")
+        self.roll_label = tkinter.Label(self, text="You rolled a {0} and a {1}.".format(roll1, roll2))
         self.roll_label.pack()
