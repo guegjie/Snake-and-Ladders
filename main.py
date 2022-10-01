@@ -50,6 +50,7 @@ def main():
                     snakes.append(Obstacle(first, second, MainWindow, "snake"))
                 else:
                     ladders.append(Obstacle(first, second, MainWindow, "ladder"))
+                    
 
     except:
         MainWindow.destroy()
@@ -63,7 +64,7 @@ def main():
         errorlabel.pack()
         errorwindow.mainloop()
     
-    
+
     
     for snake in snakes:
         snake.draw()
