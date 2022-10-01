@@ -79,7 +79,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                 if self.turn == i:
                     players[i].brightness = int(round(math.cos(math.radians(players[i].step)) * 25 + 75))
                     #players[i].brightness = 50
-                    players[i].step += 15
+                    players[i].step += 10
                         
                     for r in range(0, self.total_roll):
                         players[i-1].undraw(self)
