@@ -1,4 +1,3 @@
-from csv import excel_tab
 from Window import Window
 from Player import Player
 from snakes_ladders import Obstacle
