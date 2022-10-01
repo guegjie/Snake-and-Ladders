@@ -27,7 +27,11 @@ class Player:
             Mainlabel.pack()
             errorlabel.pack()
             errorwindow.mainloop()
-            
+
+    def draw_coords(self, window, coords):
+        radius = self.size[0] / 2
+        self.drawnplayer = window.Canvas.create_oval([coords[0]-window.square_size[0]/2, coords[1]-window.square_size[1]/2], [coords[0]+window.square_size[0]/2, coords[1]+window.square_size[1]/2], fill=self.calculateBrightness(self.colour, self.brightness))
+
     def undraw(self, window):
         window.Canvas.delete(self.drawnplayer)
     

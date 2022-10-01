@@ -50,8 +50,10 @@ class Obstacle:
 
         vector_right = [1,0]
         vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
+        self.length = math.sqrt((vector_points[0]**2)+(vector_points[1]**2))
+        self.unit_vector = [vector_points[0]/self.length, vector_points[1]/self.length]
 
-        angle = math.acos(vector_points[0] / math.sqrt((vector_points[0]**2)+(vector_points[1]**2)))
+        angle = math.acos(vector_points[0] / self.length)
         angle = math.degrees(angle)
 
         points_rotated = []

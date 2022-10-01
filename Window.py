@@ -60,8 +60,10 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
     def generate_coordinates(self, number):
         return [self.Positions[number-1][1][0], self.Positions[number-1][1][1]]
     
+    
 
-    def mainGameLoop(self, players=[]):
+
+    def mainGameLoop(self, players=[], obstacles = []):
         running = True
         self.turn = 0
         self.total_roll = 0
