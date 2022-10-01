@@ -1,5 +1,6 @@
 from binhex import hexbin
 import Window
+import tkinter
 #ihioh
 
 class Player:
@@ -11,10 +12,20 @@ class Player:
         self.step = 0
 
     def draw(self, window):
-        coords = window.generate_coordinates(self.position)
-        radius = self.size[0] / 2
-        self.drawnplayer = window.Canvas.create_oval([coords[0]-window.square_size[0]/2, coords[1]-window.square_size[1]/2], [coords[0]+window.square_size[0]/2, coords[1]+window.square_size[1]/2], fill=self.calculateBrightness(self.colour, self.brightness))
-        
+        try:
+            coords = window.generate_coordinates(self.position)
+            radius = self.size[0] / 2
+            self.drawnplayer = window.Canvas.create_oval([coords[0]-window.square_size[0]/2, coords[1]-window.square_size[1]/2], [coords[0]+window.square_size[0]/2, coords[1]+window.square_size[1]/2], fill=self.calculateBrightness(self.colour, self.brightness))
+        except:
+            window.destroy()
+            errorwindow = tkinter.Tk()
+            errorwindow.geometry("200x100")
+            Mainlabel = tkinter.Label(errorwindow, text="ERROR:003", font= ('Helvetica 25 underline'))
+            errorlabel = tkinter.Label(errorwindow, text="game unable to draw player due to fatal\n error.", font= ('Helvetica 8'))
+            Mainlabel.pack()
+            errorlabel.pack()
+            errorwindow.mainloop()
+            
     def undraw(self, window):
         window.Canvas.delete(self.drawnplayer)
     

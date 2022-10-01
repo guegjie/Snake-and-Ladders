@@ -93,7 +93,6 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                     players[i].brightness = 100
                     players[i].step = 0
                 
-                
             self.update()
             time.sleep(0.016)
 
