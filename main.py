@@ -24,7 +24,7 @@ def main():
                 first = random.randint(2, second+MainWindow.grid_dimensions[0])
                 for i in range(0, len(snakes)):
                     if snakes[i].end_pos == second:
-                        NotCollding = False
+                        NotColliding = False
                     
             snakes.append(Obstacle(first, second, MainWindow, "snake"))
     except:
@@ -55,7 +55,7 @@ def main():
                 first = random.randint(2, second+MainWindow.grid_dimensions[0])
                 for i in range(0, len(snakes)):
                     if ladders[i].start_pos == first:
-                        NotCollding = False
+                        NotColliding = False
             ladders.append(Obstacle(first, second, MainWindow, "ladder"))
             
     except:
