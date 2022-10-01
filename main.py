@@ -5,7 +5,7 @@ from snakes_ladders import Obstacle
 import random
 import math
 import tkinter
-
+import hello
 
 def main():
     MainWindow = Window(title="Snakes&Ladders")
@@ -73,6 +73,9 @@ def main():
     
     MainWindow.mainGameLoop(players=players)
     
+def plus():
+    print(hello.Hello())
     
+
 if __name__ == "__main__":
-    main()
+    plus()
