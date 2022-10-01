@@ -20,6 +20,7 @@ class Player:
             window.destroy()
             errorwindow = tkinter.Tk()
             errorwindow.geometry("200x100")
+            errorwindow.title("Error")
             Mainlabel = tkinter.Label(errorwindow, text="ERROR:003", font= ('Helvetica 25 underline'))
             errorlabel = tkinter.Label(errorwindow, text="game unable to draw player due to fatal\n error.", font= ('Helvetica 8'))
             Mainlabel.pack()
