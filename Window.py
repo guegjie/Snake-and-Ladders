@@ -1,6 +1,7 @@
 import tkinter #imports tkinter
 import random
 import time
+import math
 
 #afiahoi
 #gridsize is the length of each part of the grid for x and y 480/48**2
@@ -22,6 +23,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.total_squares = self.grid_dimensions[1] * self.grid_dimensions[0]
         self.create_grid() #
         self.add_numbers([2, 2+square_size[1]*round(self.size[1]/square_size[1])])
+        self.roll_label = None
 
     def create_grid(self): # creates grid\
         for y in range(0, self.grid_dimensions[0]):
@@ -62,8 +64,8 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         running = True
         self.turn = 0
         self.total_roll = 0
-        while running:
             
+        while running:
             for player in players:
                 player.undraw(self)
                 
@@ -75,25 +77,29 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
             
             for i in range(0, len(players)):
                 if self.turn == i:
-                    if players[i].brightness >= 15:
-                        players[i].brightness -= 5
+                    players[i].brightness = int(round(math.cos(math.radians(players[i].step)) * 25 + 75))
+                    #players[i].brightness = 50
+                    players[i].step += 15
+                        
                     for r in range(0, self.total_roll):
-                        players[i].undraw(self)
-                        players[i].position += 1
-                        players[i].draw(self)
+                        players[i-1].undraw(self)
+                        players[i-1].position += 1
+                        players[i-1].draw(self)
                         self.update()
                         time.sleep(0.016)
                     self.total_roll = 0
                 
                 if self.turn != i:
                     players[i].brightness = 100
+                    players[i].step = 0
                 
                 
             self.update()
             time.sleep(0.016)
 
     def rollFunc(self):
-        self.roll_label = None
+        if self.roll_label != None:
+            self.roll_label.destroy()
         roll1 = random.randint(1,6)
         roll2 = random.randint(1,6)
         self.total_roll = roll1 + roll2
