@@ -1,3 +1,5 @@
+from http.client import NOT_EXTENDED
+from pickle import NONE
 import tkinter #imports tkinter
 import random
 import time
@@ -60,12 +62,30 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
     def generate_coordinates(self, number):
         return [self.Positions[number-1][1][0], self.Positions[number-1][1][1]]
     
-    
+    def detect_collision(self, player, obstacles):
+        step = self.square_size[0]
+        player_coords = self.generate_coordinates(player.position)
+        obstacle_collided = NONE
+        for obstacle in obstacles:
+            if obstacle.start_pos == player.position:
+                print("collided")
+                obstacle_collided = obstacle
+        if obstacle_collided != NONE:
+            for i in range(int(obstacle_collided.length/step)):
+                player_coords[0] += obstacle_collided.unit_vector[0] * step
+                player_coords[1] += obstacle_collided.unit_vector[1] * step
+                player.undraw(self)
+                player.draw_coords(self, player_coords)
+                self.update()
+                time.sleep(0.016)
+            player.position = obstacle_collided.end_pos
 
 
     def mainGameLoop(self, players=[], obstacles = []):
+        print(obstacles)
         running = True
         self.turn = 0
+        turn_player = NONE
         self.total_roll = 0
             
         while running:
@@ -80,6 +100,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
             
             for i in range(0, len(players)):
                 if self.turn == i:
+                    turn_player = players[i-1]
                     players[i].brightness = int(round(math.cos(math.radians(players[i].step)) * 25 + 75))
                     #players[i].brightness = 50
                     players[i].step += 10
@@ -91,11 +112,13 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                         self.update()
                         time.sleep(0.016)
                     self.total_roll = 0
+                    self.detect_collision(players[i-1], obstacles)
                 
                 if self.turn != i:
                     players[i].brightness = 100
                     players[i].step = 0
-                
+            
+
             self.update()
             time.sleep(0.016)
 

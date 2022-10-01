@@ -113,7 +113,7 @@ def main():
     for ladder in ladders:
         ladder.draw()
     
-    MainWindow.mainGameLoop(players=players)
+    MainWindow.mainGameLoop(players=players, obstacles=snakes+ladders)
     
     
 
