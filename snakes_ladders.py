@@ -4,11 +4,15 @@ class Obstacle:
     def __init__(self, start_pos, end_pos, window, type="snake"):
         self.start_pos = start_pos
         self.end_pos = end_pos
+        self.type = type
+        if (self.type == "snake" and self.start_pos < self.end_pos) or (self.type == "ladder" and self.start_pos > self.end_pos):
+            temp = self.start_pos
+            self.start_pos = self.end_pos
+            self.end_pos = temp
         print(self.start_pos, self.end_pos)
         self.window = window
         self.start_coords = self.window.generate_coordinates(start_pos)
         self.end_coords = self.window.generate_coordinates(end_pos)
-        self.type = type
         self.generate_obstacle()
     
     def Rotate(self, point=[0,0], centre=[0,0], rotation=0):
