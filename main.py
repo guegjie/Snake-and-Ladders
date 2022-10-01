@@ -5,7 +5,6 @@ from snakes_ladders import Obstacle
 import random
 import math
 import tkinter
-import hello
 
 def main():
     MainWindow = Window(title="Snakes&Ladders")
