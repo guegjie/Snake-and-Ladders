@@ -73,9 +73,7 @@ def main():
     
     MainWindow.mainGameLoop(players=players)
     
-def plus():
-    print(hello.Hello())
     
 
 if __name__ == "__main__":
-    plus()
+    main()
