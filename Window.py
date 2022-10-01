@@ -24,7 +24,8 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.create_grid() #
         self.add_numbers([2, 2+square_size[1]*round(self.size[1]/square_size[1])])
         self.roll_label = None
-        self.iconbitmap('Icons\Icon.ico')
+        img = tkinter.PhotoImage(file='Icons\Icon.ico')
+        self.iconbitmap(img)
 
     def create_grid(self): # creates grid\
         for y in range(0, self.grid_dimensions[0]):

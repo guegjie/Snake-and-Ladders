@@ -17,7 +17,7 @@ def main():
     try:
         for i in range(0, round((MainWindow.total_squares/100)*4)):
             second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-2)
-            first = random.randint(2, second-MainWindow.grid_dimensions[0])
+            first = random.randint(2, second+MainWindow.grid_dimensions[0])
             NotColliding = False
             while first+MainWindow.grid_dimensions[0]>=second and NotColliding:
                 second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-2)
@@ -48,7 +48,7 @@ def main():
     try:
         for i in range(0, round((MainWindow.total_squares/100)*4)):
             second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-2)
-            first = random.randint(2, second-MainWindow.grid_dimensions[0])
+            first = random.randint(2, second+MainWindow.grid_dimensions[0])
             NotColliding = False
             while first+MainWindow.grid_dimensions[0]>=second and NotColliding:
                 second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-2)
