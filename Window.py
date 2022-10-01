@@ -25,7 +25,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.add_numbers([2, 2+square_size[1]*round(self.size[1]/square_size[1])])
         self.roll_label = None
 
-    def create_grid(self): # creates grid\
+    def create_grid(self): # creates grid
         for y in range(0, self.grid_dimensions[0]):
             for x in range(0, self.grid_dimensions[1]):
                 square = [((self.square_size[0])*x+2), ((self.square_size[1])*y)+2, ((self.square_size[0]*x)+self.square_size[0])+2, ((self.square_size[1]*y)+self.square_size[0])+2] #creates the square
