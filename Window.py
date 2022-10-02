@@ -2,6 +2,7 @@ import tkinter #imports tkinter
 import random
 import time
 import math
+from tkinter import messagebox
 
 #afiahoi
 #gridsize is the length of each part of the grid for x and y 480/48**2
@@ -127,10 +128,18 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                     for r in range(0, self.total_roll):
                         players[i-1].undraw(self)
                         players[i-1].position += 1
+                        if players[i-1].position >= self.grid_dimensions[0]*self.grid_dimensions[1]:
+                            players[i-1].position = self.grid_dimensions[0]*self.grid_dimensions[1]
                         players[i-1].draw(self)
                         self.update()
                         time.sleep(0.016)
                     self.detect_collision(players[i-1], obstacles)
+                    
+                    if players[i-1].position >= self.grid_dimensions[0]*self.grid_dimensions[1]:
+                        messagebox.showinfo("Snakes and ladders", players[i-1].name + " has won.")
+                        self.destroy()
+                        return 0
+
                     self.total_roll = 0
                 
                 if self.turn != i:

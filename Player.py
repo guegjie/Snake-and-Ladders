@@ -5,6 +5,7 @@ import tkinter
 
 class Player:
     def __init__(self, name="player", position=1, colour="#FFFFFF", size=[10,10]):
+        self.name = name
         self.position = position
         self.colour = colour
         self.size = size
