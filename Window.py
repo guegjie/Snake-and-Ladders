@@ -105,6 +105,12 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         self.total_roll = 0
             
         while running:
+            if self.total_roll != 0:
+                self.RollBtn["state"] = tkinter.DISABLED
+            else:
+                self.RollBtn["state"] = tkinter.NORMAL
+
+
             for player in players:
                 player.undraw(self)
                 
