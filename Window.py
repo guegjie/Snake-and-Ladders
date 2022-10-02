@@ -1,5 +1,3 @@
-from http.client import NOT_EXTENDED
-from pickle import NONE
 import tkinter #imports tkinter
 import random
 import time
@@ -81,12 +79,12 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
     def detect_collision(self, player, obstacles):
         step = self.square_size[0]
         player_coords = self.generate_coordinates(player.position)
-        obstacle_collided = NONE
+        obstacle_collided = None
         for obstacle in obstacles:
             if obstacle.start_pos == player.position:
                 print("collided")
                 obstacle_collided = obstacle
-        if obstacle_collided != NONE:
+        if obstacle_collided != None:
             for i in range(int(obstacle_collided.length/step)):
                 player_coords[0] += obstacle_collided.unit_vector[0] * step
                 player_coords[1] += obstacle_collided.unit_vector[1] * step
@@ -101,7 +99,6 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         print(obstacles)
         running = True
         self.turn = 0
-        turn_player = NONE
         self.total_roll = 0
             
         while running:
@@ -122,7 +119,6 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
             
             for i in range(0, len(players)):
                 if self.turn == i:
-                    turn_player = players[i-1]
                     players[i].brightness = int(round(math.cos(math.radians(players[i].step)) * 25 + 75))
                     #players[i].brightness = 50
                     players[i].step += 10
