@@ -93,6 +93,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                 self.update()
                 time.sleep(0.016)
             player.position = obstacle_collided.end_pos
+            self.detect_collision(player, obstacles)
 
 
     def mainGameLoop(self, players=[], obstacles = []):
@@ -129,8 +130,8 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                         players[i-1].draw(self)
                         self.update()
                         time.sleep(0.016)
-                    self.total_roll = 0
                     self.detect_collision(players[i-1], obstacles)
+                    self.total_roll = 0
                 
                 if self.turn != i:
                     players[i].brightness = 100

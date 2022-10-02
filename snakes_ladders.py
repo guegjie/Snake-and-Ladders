@@ -13,6 +13,9 @@ class Obstacle:
         self.window = window
         self.start_coords = self.window.generate_coordinates(start_pos)
         self.end_coords = self.window.generate_coordinates(end_pos)
+        self.vector = [self.end_coords[0]-self.start_coords[0], self.end_coords[1]-self.start_coords[1]]
+        self.length = math.sqrt((self.vector[0]**2)+(self.vector[1]**2))
+        self.unit_vector = [self.vector[0]/self.length, self.vector[1]/self.length]
         self.generate_obstacle()
     
     def Rotate(self, point=[0,0], centre=[0,0], rotation=0):
@@ -50,8 +53,6 @@ class Obstacle:
 
         vector_right = [1,0]
         vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
-        self.length = math.sqrt((vector_points[0]**2)+(vector_points[1]**2))
-        self.unit_vector = [vector_points[0]/self.length, vector_points[1]/self.length]
 
         angle = math.acos(vector_points[0] / self.length)
         angle = math.degrees(angle)
