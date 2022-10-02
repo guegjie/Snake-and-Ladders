@@ -6,7 +6,7 @@ import math
 import tkinter
 
 def main():
-    MainWindow = Window(title="Snakes&Ladders")
+    MainWindow = Window(title="Snakes&Ladders", square_size=[48, 48])
     players = [Player(name="Louis", colour="#FF0000"), Player(name="Not Louis", colour="#00FF00")]
     for player in players:
         player.draw(MainWindow)
