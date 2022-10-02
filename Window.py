@@ -58,6 +58,22 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                 start_from = "right"
             else:
                 start_from = "left"
+
+    def create_end_star(self):
+        def add_vectors(vectors=[]):
+            sum = [0,0]
+            for vector in vectors:
+                sum[0] += vector[0]
+                sum[1] += vector[1]
+            return sum
+
+        end_pos = self.grid_dimensions[0] * self.grid_dimensions[1]
+        end_coords = self.generate_coordinates(end_pos)
+        x = self.square_size[0]
+        y = self.square_size[1]
+        point1 = add_vectors([end_coords, [0, -0.5*y], [-0.5*x,0], [0,x-(math.cos(18)*x*math.sin(36)/math.sin(108))]])
+        points = [[end_coords[0], end_coords[1]-self.square_size[1]]] 
+        self.window.create_polygon(points, fill="yellow")
         
     def generate_coordinates(self, number):
         return [self.Positions[number-1][1][0], self.Positions[number-1][1][1]]
