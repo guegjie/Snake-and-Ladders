@@ -11,14 +11,16 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
     def __init__(self, title="Window", size=[721, 481], square_size=[48,48]):
         super().__init__()
         self.title(title)
+        self.configure(bg='#ffffff')
         self.size = size
         self.square_size = square_size
         self.Positions = []
         self.resizable(False, False)
-        self.Canvas = tkinter.Canvas(self, background="black", width=size[0], height=size[1])
+        self.Canvas = tkinter.Canvas(self, background="#694f16", width=size[0], height=size[1])
         self.Canvas.pack()
         self.turn = 0
-        self.RollBtn = tkinter.Button(self, background="white",width=10, height=1, text="Roll", command=self.rollFunc)
+        self.RollBtn = tkinter.Button(self,width=10, height=1, text="Roll", command=self.rollFunc, bg="#ffffff", fg="#000000", activebackground="#cccccc", activeforeground="#333333", font="GulimChe 12",	
+highlightcolor="#665e4b", relief="solid", highlightthickness = 2, borderwidth=1)
         self.RollBtn.pack()
         self.grid_dimensions = [round(self.size[1]/self.square_size[1]), round(self.size[0]/self.square_size[0])]
         self.total_squares = self.grid_dimensions[1] * self.grid_dimensions[0]
@@ -31,7 +33,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         for y in range(0, self.grid_dimensions[0]):
             for x in range(0, self.grid_dimensions[1]):
                 square = [((self.square_size[0])*x+2), ((self.square_size[1])*y)+2, ((self.square_size[0]*x)+self.square_size[0])+2, ((self.square_size[1]*y)+self.square_size[0])+2] #creates the square
-                self.Canvas.create_rectangle(square, fill="White")
+                self.Canvas.create_rectangle(square, fill="#f7d383", outline="#694f16")
 
     def add_numbers(self, grid_location): #give grid_dimensions as [rows, columns], square_dimensions as [x,y], grid_location as bottom left corner of grid
         #variable determines which side the numbers count on for each row
@@ -48,7 +50,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
                 else:
                     right_x = grid_location[0] + (self.grid_dimensions[1]*self.square_size[0])
                     x = right_x - (0.5 * self.square_size[0]) - (self.square_size[0] * square)
-                self.Canvas.create_text(x, y, text=str(number), fill="black", font="Helvetica 8 normal")
+                self.Canvas.create_text(x, y, text=str(number), fill="#694f16", font="GulimChe 10")
                 self.Positions.append([number, [x,y]])
                 number += 1
 
@@ -72,7 +74,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         y = self.square_size[1]
         point1 = add_vectors([end_coords, [0, -0.5*y], [-0.5*x,0], [0,x-(math.cos(18)*x*math.sin(36)/math.sin(108))]])
         points = [[end_coords[0], end_coords[1]-self.square_size[1]]] 
-        self.window.create_polygon(points, fill="yellow")
+        self.window.create_polygon(points, fill="#694f16")
         
     def generate_coordinates(self, number):
         return [self.Positions[number-1][1][0], self.Positions[number-1][1][1]]
@@ -156,6 +158,7 @@ class Window(tkinter.Tk): #creates a class called window  48/5=10
         roll1 = random.randint(1,6)
         roll2 = random.randint(1,6)
         self.total_roll = roll1 + roll2
-        self.roll_label = tkinter.Label(self, text="You rolled a {0} and a {1}.".format(roll1, roll2))
+        self.roll_label = tkinter.Label(self, text="You rolled a {0} and a {1}.".format(roll1, roll2), font="GulimChe 12", fg="#000000")
+        self.roll_label.config(bg="#ffffff")
         self.roll_label.pack()
         self.turn += 1

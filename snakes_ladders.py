@@ -1,4 +1,5 @@
 import math
+from weakref import finalize
 
 class Obstacle:
     def __init__(self, start_pos, end_pos, window, type="snake"):
@@ -47,11 +48,23 @@ class Obstacle:
             #body
             #points.extend([[start_point[0] + 2.5, start_point[1] + 7.5], [start_point[0] + 2.5, start_point[1] + length - 2.5], [start_point[0], start_point[1] + length], [start_point[0] - 2.5, start_point[1] + length - 2.5], [start_point[0] - 2.5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5]])
             points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1] + length], [start_point[0] - 2.5, start_point[1]+length]]
-
+            self.points = self.finalPoints(end_point, start_point, points)
+            
+        
+        
+        thicknessFraction = 15
+        sizeFraction = 4
+        
+        
         if self.type == "ladder":
-            points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1] + length], [start_point[0] - 2.5, start_point[1]+length]]
-
-        vector_right = [1,0]
+            points = [[start_point[0] - self.window.square_size[0]/sizeFraction + self.window.square_size[0]/thicknessFraction, start_point[1]], [start_point[0] - self.window.square_size[0]/sizeFraction, start_point[1]], [start_point[0] - self.window.square_size[0]/sizeFraction, start_point[1] + length], [start_point[0] - self.window.square_size[0]/sizeFraction + self.window.square_size[0]/thicknessFraction, start_point[1]+length]]
+            points2 = [[start_point[0] + self.window.square_size[0]/sizeFraction - self.window.square_size[0]/thicknessFraction, start_point[1]], [start_point[0] + self.window.square_size[0]/sizeFraction, start_point[1]], [start_point[0] + self.window.square_size[0]/sizeFraction, start_point[1] + length], [start_point[0] + self.window.square_size[0]/sizeFraction - self.window.square_size[0]/thicknessFraction, start_point[1]+length]]
+            self.points = self.finalPoints(end_point, start_point, points)
+            self.points2 = self.finalPoints(end_point, start_point, points2)
+    
+    
+    
+    def finalPoints(self, end_point, start_point, points):
         vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
 
         angle = math.acos(vector_points[0] / self.length)
@@ -61,12 +74,12 @@ class Obstacle:
         for point in points:
             points_rotated.append(self.Rotate(point, start_point, 90 + angle))
 
-        self.points = points_rotated
+        return points_rotated
 
 
     def draw(self):
         if self.type == "snake":
             self.window.Canvas.create_polygon(self.points, fill="green")
         if self.type == "ladder":
-            self.window.Canvas.create_polygon(self.points, fill="brown")
-    
+            self.window.Canvas.create_polygon(self.points, fill="brown", outline="black")
+            self.window.Canvas.create_polygon(self.points2, fill="brown", outline="black")
