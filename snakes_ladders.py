@@ -54,13 +54,18 @@ class Obstacle:
         
         thicknessFraction = 15
         sizeFraction = 4
+        distanceBetweenHandles = 20
+        points3=[]
         
         
         if self.type == "ladder":
             points = [[start_point[0] - self.window.square_size[0]/sizeFraction + self.window.square_size[0]/thicknessFraction, start_point[1]], [start_point[0] - self.window.square_size[0]/sizeFraction, start_point[1]], [start_point[0] - self.window.square_size[0]/sizeFraction, start_point[1] + length], [start_point[0] - self.window.square_size[0]/sizeFraction + self.window.square_size[0]/thicknessFraction, start_point[1]+length]]
             points2 = [[start_point[0] + self.window.square_size[0]/sizeFraction - self.window.square_size[0]/thicknessFraction, start_point[1]], [start_point[0] + self.window.square_size[0]/sizeFraction, start_point[1]], [start_point[0] + self.window.square_size[0]/sizeFraction, start_point[1] + length], [start_point[0] + self.window.square_size[0]/sizeFraction - self.window.square_size[0]/thicknessFraction, start_point[1]+length]]
+            for i in range(distanceBetweenHandles, round(length-distanceBetweenHandles), distanceBetweenHandles):
+                points3.append([[start_point[0] + self.window.square_size[0]/sizeFraction - self.window.square_size[0]/thicknessFraction, start_point[1]+i], [start_point[0] - self.window.square_size[0]/sizeFraction + self.window.square_size[0]/thicknessFraction, start_point[1]+i], [start_point[0] - self.window.square_size[0]/sizeFraction + self.window.square_size[0]/thicknessFraction, start_point[1]+i+self.window.square_size[1]/thicknessFraction], [start_point[0] + self.window.square_size[0]/sizeFraction - self.window.square_size[0]/thicknessFraction, start_point[1]+i+self.window.square_size[1]/thicknessFraction]])
             self.points = self.finalPoints(end_point, start_point, points)
             self.points2 = self.finalPoints(end_point, start_point, points2)
+            self.points3 = self.multifinalPoints(end_point, start_point, points3)
     
     
     
@@ -77,9 +82,24 @@ class Obstacle:
         return points_rotated
 
 
+    def multifinalPoints(self, end_point, start_point, pointss):
+        vector_points = [end_point[0]-start_point[0], end_point[1]-start_point[1]]
+
+        angle = math.acos(vector_points[0] / self.length)
+        angle = math.degrees(angle)
+
+        points_rotated = []
+        for points in pointss:
+            for point in points:
+                points_rotated.append(self.Rotate(point, start_point, 90 + angle))
+
+        return points_rotated
+
+
     def draw(self):
         if self.type == "snake":
             self.window.Canvas.create_polygon(self.points, fill="green")
         if self.type == "ladder":
             self.window.Canvas.create_polygon(self.points, fill="brown", outline="black")
             self.window.Canvas.create_polygon(self.points2, fill="brown", outline="black")
+            self.window.Canvas.create_polygon(self.points3, fill="brown", outline="black")
