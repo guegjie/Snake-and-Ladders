@@ -2,12 +2,60 @@ from Window import Window
 from Player import Player
 from snakes_ladders import Obstacle
 import random
-import math
 import tkinter
+from tkinter import colorchooser
 
-def main():
+players = []
+
+def startWindow():
+    #Configure Window
+    startWindow = tkinter.Tk()
+    startWindow.title("configure Snakes&Ladders")
+    startWindow.geometry("300x500")
+    startWindow.resizable(False, False)
+    
+    #Buttons    
+    tkinter.Button(startWindow, text="Start", width=7, command=lambda: [startWindow.destroy(), startMain()]).pack(side=tkinter.BOTTOM)
+    
+    playersfield = tkinter.Canvas(startWindow, width=251, height=51, background="#a6a6a6")
+    playersfield.pack(side=tkinter.BOTTOM)
+    nameTextBox = tkinter.Text(startWindow)
+    nameTextBox.place(x=112, y=394, width=100, height=25)
+    tkinter.Button(startWindow, text="Add", command=lambda: addPlayer("louis", playersfield)).place(x=25, y=394)
+    tkinter.Button(startWindow, text="Remove", command=lambda: removePlayer(playersfield)).place(x=58, y=394)
+    
+    for i in range(0, len(players)):
+        playersfield.create_oval([(250/5)*i+2,2], [(250/5)*(i+1)+2,52], fill=players[i].colour)
+        
+    #functions
+    def addPlayer(name, playersfield):
+        colour = colorchooser.askcolor()
+        allText = nameTextBox.get(1.0, "end-1c").split("\n")
+        nameTextBox.delete(1.0, "end")
+        if len(players) < 5 and len(allText) == 1 and len(allText[0]) > 0:
+            players.append(Player(name=allText[0], colour=colour[-1]))
+        else:
+            print("Error Adding Player")
+        
+        playersfield.delete("all")
+        for i in range(0, len(players)):
+            playersfield.create_oval([(250/5)*i+2,2], [(250/5)*(i+1)+2,52], fill=players[i].colour)
+    
+
+    def removePlayer(playersfield):
+        players.pop()
+        playersfield.delete("all")
+        for i in range(0, len(players)):
+            playersfield.create_oval([(250/5)*i+2,2], [(250/5)*(i+1)+2,52], fill=players[i].colour)
+    
+    
+    startWindow.mainloop()
+    
+
+
+
+def startMain():
     MainWindow = Window(title="Snakes&Ladders", square_size=[48, 48])
-    players = [Player(name="Louis", colour="#FF0000"), Player(name="Not Louis", colour="#00FF00")]
     for player in players:
         player.draw(MainWindow)
     
@@ -62,8 +110,14 @@ def main():
         ladder.draw()
     
     MainWindow.mainGameLoop(players=players, obstacles=snakes+ladders)
+    startWindow()
     
     
+def main():
+        startWindow()       
+        
+
+
 
 if __name__ == "__main__":
     main()

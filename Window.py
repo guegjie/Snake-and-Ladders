@@ -151,6 +151,7 @@ highlightcolor="#665e4b", relief="solid", highlightthickness = 2, borderwidth=1)
 
             self.update()
             time.sleep(0.016)
+            
 
     def rollFunc(self):
         if self.roll_label != None:
