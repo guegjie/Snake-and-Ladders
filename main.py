@@ -14,12 +14,12 @@ def startWindow():
     startWindow.geometry("300x500")
     startWindow.resizable(False, False)
     
-    #Buttons    
+    #Buttons
     tkinter.Button(startWindow, text="Start", width=7, command=lambda: [startWindow.destroy(), startMain()]).pack(side=tkinter.BOTTOM)
     
     playersfield = tkinter.Canvas(startWindow, width=251, height=51, background="#a6a6a6")
     playersfield.pack(side=tkinter.BOTTOM)
-    nameTextBox = tkinter.Text(startWindow)
+    nameTextBox = tkinter.Entry(startWindow)
     nameTextBox.place(x=112, y=394, width=100, height=25)
     tkinter.Button(startWindow, text="Add", command=lambda: addPlayer("louis", playersfield)).place(x=25, y=394)
     tkinter.Button(startWindow, text="Remove", command=lambda: removePlayer(playersfield)).place(x=58, y=394)
@@ -30,10 +30,10 @@ def startWindow():
     #functions
     def addPlayer(name, playersfield):
         colour = colorchooser.askcolor()
-        allText = nameTextBox.get(1.0, "end-1c").split("\n")
-        nameTextBox.delete(1.0, "end")
-        if len(players) < 5 and len(allText) == 1 and len(allText[0]) > 0:
-            players.append(Player(name=allText[0], colour=colour[-1]))
+        allText = nameTextBox.get()
+        nameTextBox.delete(0, "end")
+        if len(players) < 5 and len(allText[0]) > 0:
+            players.append(Player(name=allText, colour=colour[-1]))
         else:
             print("Error Adding Player")
         
@@ -47,7 +47,6 @@ def startWindow():
         playersfield.delete("all")
         for i in range(0, len(players)):
             playersfield.create_oval([(250/5)*i+2,2], [(250/5)*(i+1)+2,52], fill=players[i].colour)
-    
     
     startWindow.mainloop()
     
@@ -69,8 +68,8 @@ def startMain():
             for i in range(0, round((MainWindow.total_squares/100)*4)):
                 colliding = True
                 while colliding:
-                    second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-MainWindow.grid_dimensions[1])
-                    first = random.randint(second + MainWindow.grid_dimensions[1], MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1])
+                    second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-MainWindow.grid_dimensions[1]-2)
+                    first = random.randint(second + MainWindow.grid_dimensions[1], MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-2)
                     if type == 1:
                         temp = second
                         second = first
