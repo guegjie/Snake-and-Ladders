@@ -7,7 +7,7 @@ from tkinter import colorchooser
 
 players = []
 
-def startWindow():
+def startWindow():    
     #Configure Window
     startWindow = tkinter.Tk()
     startWindow.title("configure Snakes&Ladders")
@@ -54,6 +54,8 @@ def startWindow():
 
 
 def startMain():
+    for player in players:
+        player.position = 0
     MainWindow = Window(title="Snakes&Ladders", square_size=[48, 48])
     for player in players:
         player.draw(MainWindow)
