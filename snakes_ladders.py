@@ -51,9 +51,13 @@ class Obstacle:
             
             sectionLength = 10
             head = [[start_point[0], start_point[1]+length+self.window.square_size[1]/8], [start_point[0]+self.window.square_size[0]/5, start_point[1]+length-self.window.square_size[1]/4], [start_point[0], start_point[1]+length-self.window.square_size[1]/2], [start_point[0]-self.window.square_size[0]/5, start_point[1]+length-self.window.square_size[1]/4]]
-            body =[[start_point[0]-self.window.square_size[0]/20, start_point[1]], [start_point[0]-self.window.square_size[0]/20, start_point[1]+length], [start_point[0]+self.window.square_size[0]/20, start_point[1]+length], [start_point[0]+self.window.square_size[0]/20, start_point[1]]]
+            body1 =[[start_point[0]-self.window.square_size[0]/20, start_point[1]], [start_point[0]-self.window.square_size[0]/20, start_point[1]+length], [start_point[0]+self.window.square_size[0]/20, start_point[1]+length], [start_point[0]+self.window.square_size[0]/20, start_point[1]]]
+            body2=[]
+            for i in range(0, len(body1), 20):
+                body2.append([[start_point[0] + self.window.square_size[0]/4 - self.window.square_size[0]/15, start_point[1]+i], [start_point[0] - self.window.square_size[0]/4 + self.window.square_size[0]/15, start_point[1]+i], [start_point[0] - self.window.square_size[0]/4 + self.window.square_size[0]/4, start_point[1]+i+self.window.square_size[1]/15], [start_point[0] + self.window.square_size[0]/4 - self.window.square_size[0]/15, start_point[1]+i+self.window.square_size[1]/thicknessFraction]])
             self.points = self.finalPoints(end_point, start_point, head)
-            self.points2 = self.finalPoints(end_point, start_point, body)
+            self.points2 = self.finalPoints(end_point, start_point, body1)
+            self.points3 = self.multifinalPoints(end_point, start_point, body2)
             
         
         
@@ -105,6 +109,7 @@ class Obstacle:
         if self.type == "snake":
             self.window.Canvas.create_polygon(self.points2, fill="green", outline="black")
             self.window.Canvas.create_polygon(self.points, fill="green", outline="black")
+            self.window.Canvas.create_polygon(self.points3, fill="green", outline="black")
         if self.type == "ladder":
             self.window.Canvas.create_polygon(self.points, fill="brown", outline="black")
             self.window.Canvas.create_polygon(self.points2, fill="brown", outline="black")
