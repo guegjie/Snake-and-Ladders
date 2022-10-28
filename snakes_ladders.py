@@ -42,6 +42,9 @@ class Obstacle:
         
         length = math.sqrt(((start_point[0]-end_point[0])**2) + ((start_point[1]-end_point[1]) ** 2))
 
+
+
+
         if self.type == "snake":
             #head
             #points = [[start_point[0] + 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 2.5], start_point, [start_point[0] + 5, start_point[1] + 2.5], [start_point[0] + 5, start_point[1] + 7.5]]
@@ -49,25 +52,37 @@ class Obstacle:
             #points.extend([[start_point[0] + 2.5, start_point[1] + 7.5], [start_point[0] + 2.5, start_point[1] + length - 2.5], [start_point[0], start_point[1] + length], [start_point[0] - 2.5, start_point[1] + length - 2.5], [start_point[0] - 2.5, start_point[1] + 7.5], [start_point[0] - 5, start_point[1] + 7.5]])
             #points = [[start_point[0] - 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1]], [start_point[0] + 2.5, start_point[1] + length], [start_point[0] - 2.5, start_point[1]+length]]
             
-            sectionLength = 10
+            thicknessFraction = 5
+            sizeFraction = 25
+            distanceBetweenHandles = 20
+            
             head = [[start_point[0], start_point[1]+length+self.window.square_size[1]/8], [start_point[0]+self.window.square_size[0]/5, start_point[1]+length-self.window.square_size[1]/4], [start_point[0], start_point[1]+length-self.window.square_size[1]/2], [start_point[0]-self.window.square_size[0]/5, start_point[1]+length-self.window.square_size[1]/4]]
             body1 =[[start_point[0]-self.window.square_size[0]/20, start_point[1]], [start_point[0]-self.window.square_size[0]/20, start_point[1]+length], [start_point[0]+self.window.square_size[0]/20, start_point[1]+length], [start_point[0]+self.window.square_size[0]/20, start_point[1]]]
             body2=[]
-            for i in range(0, len(body1), 20):
-                body2.append([[start_point[0] + self.window.square_size[0]/4 - self.window.square_size[0]/15, start_point[1]+i], [start_point[0] - self.window.square_size[0]/4 + self.window.square_size[0]/15, start_point[1]+i], [start_point[0] - self.window.square_size[0]/4 + self.window.square_size[0]/4, start_point[1]+i+self.window.square_size[1]/15], [start_point[0] + self.window.square_size[0]/4 - self.window.square_size[0]/15, start_point[1]+i+self.window.square_size[1]/thicknessFraction]])
+            left = 1
+            for i in range(round(length-20), 0, -20):
+                if left == 1:
+                    body2.append([[start_point[0], start_point[1]+length-self.window.square_size[1]/2-i], 
+                              [start_point[0]+sizeFraction, start_point[1]+length-self.window.square_size[1]/2-i-20], 
+                              [start_point[0]+sizeFraction+thicknessFraction, start_point[1]+length-self.window.square_size[1]/2-i-20+thicknessFraction], 
+                              [start_point[0]+thicknessFraction, start_point[1]+length-self.window.square_size[1]/2+thicknessFraction-i]])
+                    
+                left *= -1
+                
             self.points = self.finalPoints(end_point, start_point, head)
             self.points2 = self.finalPoints(end_point, start_point, body1)
             self.points3 = self.multifinalPoints(end_point, start_point, body2)
             
         
         
-        thicknessFraction = 15
-        sizeFraction = 4
-        distanceBetweenHandles = 20
-        points3=[]
+        
         
         
         if self.type == "ladder":
+            thicknessFraction = 15
+            sizeFraction = 4
+            distanceBetweenHandles = 20
+            points3=[]
             points = [[start_point[0] - self.window.square_size[0]/sizeFraction + self.window.square_size[0]/thicknessFraction, start_point[1]], [start_point[0] - self.window.square_size[0]/sizeFraction, start_point[1]], [start_point[0] - self.window.square_size[0]/sizeFraction, start_point[1] + length], [start_point[0] - self.window.square_size[0]/sizeFraction + self.window.square_size[0]/thicknessFraction, start_point[1]+length]]
             points2 = [[start_point[0] + self.window.square_size[0]/sizeFraction - self.window.square_size[0]/thicknessFraction, start_point[1]], [start_point[0] + self.window.square_size[0]/sizeFraction, start_point[1]], [start_point[0] + self.window.square_size[0]/sizeFraction, start_point[1] + length - self.window.square_size[1]/10], [start_point[0] + self.window.square_size[0]/sizeFraction - self.window.square_size[0]/thicknessFraction, start_point[1]+length - self.window.square_size[1]/10]]
             for i in range(distanceBetweenHandles, round(length-distanceBetweenHandles), distanceBetweenHandles):

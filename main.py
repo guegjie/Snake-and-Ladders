@@ -53,7 +53,7 @@ def startWindow():
 
 
 
-def startMain():
+def startMain(dev=True):
     for player in players:
         player.position = 0
     MainWindow = Window(title="Snakes&Ladders", square_size=[48, 48])
@@ -64,43 +64,65 @@ def startMain():
     snakes = []
     ladders = []
 
-
-    try:
-        for type in range(2):
-            for i in range(0, round((MainWindow.total_squares/100)*4)):
-                colliding = True
-                while colliding:
-                    second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-MainWindow.grid_dimensions[1]-2)
-                    first = random.randint(second + MainWindow.grid_dimensions[1], MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-2)
-                    if type == 1:
-                        temp = second
-                        second = first
-                        first = temp
-                    colliding = False
-                    for i in range(0, len(snakes)):
-                        if snakes[i].start_pos == first:
-                            colliding = True
-                    for i in range(0, len(ladders)):
-                        if ladders[i].start_pos == first:
-                            colliding = True
-                if type == 0:
-                    snakes.append(Obstacle(first, second, MainWindow, "snake"))
-                else:
-                    ladders.append(Obstacle(first, second, MainWindow, "ladder"))
+    if dev == False:
+        try:
+            for type in range(2):
+                for i in range(0, round((MainWindow.total_squares/100)*4)):
+                    colliding = True
+                    while colliding:
+                        second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-MainWindow.grid_dimensions[1]-2)
+                        first = random.randint(second + MainWindow.grid_dimensions[1], MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-2)
+                        if type == 1:
+                            temp = second
+                            second = first
+                            first = temp
+                        colliding = False
+                        for i in range(0, len(snakes)):
+                            if snakes[i].start_pos == first:
+                                colliding = True
+                        for i in range(0, len(ladders)):
+                            if ladders[i].start_pos == first:
+                                colliding = True
+                    if type == 0:
+                        snakes.append(Obstacle(first, second, MainWindow, "snake"))
+                    else:
+                        ladders.append(Obstacle(first, second, MainWindow, "ladder"))
                     
 
-    except:
-        MainWindow.destroy()
-        errorwindow = tkinter.Tk()
-        errorwindow.geometry("200x100")
-        errorwindow.title("Error")
-        errorwindow.call('wm', 'iconphoto', errorwindow._w, tkinter.PhotoImage(file='Error.png'))
-        Mainlabel = tkinter.Label(errorwindow, text="ERROR:001", font= ('Helvetica 25 underline'))
-        errorlabel = tkinter.Label(errorwindow, text="game unable to launch due to fatal error.\n try relaunching.", font= ('Helvetica 8'))
-        Mainlabel.pack()
-        errorlabel.pack()
-        errorwindow.mainloop()
-    
+        except:
+            MainWindow.destroy()
+            errorwindow = tkinter.Tk()
+            errorwindow.geometry("200x100")
+            errorwindow.title("Error")
+            errorwindow.call('wm', 'iconphoto', errorwindow._w, tkinter.PhotoImage(file='Error.png'))
+            Mainlabel = tkinter.Label(errorwindow, text="ERROR:001", font= ('Helvetica 25 underline'))
+            errorlabel = tkinter.Label(errorwindow, text="game unable to launch due to fatal error.\n try relaunching.", font= ('Helvetica 8'))
+            Mainlabel.pack()
+            errorlabel.pack()
+            errorwindow.mainloop()
+        
+    else:
+        for type in range(2):
+                for i in range(0, round((MainWindow.total_squares/100)*4)):
+                    colliding = True
+                    while colliding:
+                        second = random.randint(2,MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-MainWindow.grid_dimensions[1]-2)
+                        first = random.randint(second + MainWindow.grid_dimensions[1], MainWindow.grid_dimensions[0]*MainWindow.grid_dimensions[1]-2)
+                        if type == 1:
+                            temp = second
+                            second = first
+                            first = temp
+                        colliding = False
+                        for i in range(0, len(snakes)):
+                            if snakes[i].start_pos == first:
+                                colliding = True
+                        for i in range(0, len(ladders)):
+                            if ladders[i].start_pos == first:
+                                colliding = True
+                    if type == 0:
+                        snakes.append(Obstacle(first, second, MainWindow, "snake"))
+                    else:
+                        ladders.append(Obstacle(first, second, MainWindow, "ladder"))
 
     
     for snake in snakes:
